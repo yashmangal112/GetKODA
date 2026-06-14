@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>KODA | Contact & Support</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #0D0D0D;
+      color: #e5e2e1;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.8;
+      padding: 80px 24px 120px;
+    }
+
+    .page {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .wordmark {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+      display: inline-block;
+      color: #FF5C3A;
+      text-decoration: none;
+    }
+    .wordmark .accent { color: #FF5C3A; }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+      color: #ffffff;
+    }
+
+    .meta {
+      font-size: 15px;
+      color: #7a6e6b;
+      margin-bottom: 56px;
+    }
+
+    .divider {
+      width: 40px;
+      height: 2px;
+      background: #FF5C3A;
+      margin-bottom: 56px;
+    }
+
+    /* Contact cards row */
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 64px;
+    }
+
+    .contact-card {
+      background: rgba(26, 26, 26, 0.7);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-decoration: none;
+      transition: border-color 0.25s, background 0.25s;
+    }
+    .contact-card:hover {
+      border-color: rgba(255, 92, 58, 0.35);
+      background: rgba(255, 92, 58, 0.05);
+    }
+
+    .card-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 92, 58, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+    .card-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: #FF5C3A;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .card-label {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #FF5C3A;
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 13px;
+      color: #6a5e5b;
+    }
+
+    /* Section heading */
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 20px;
+    }
+
+    /* FAQ */
+    .faq {
+      margin-bottom: 64px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: #e5e2e1;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      padding: 20px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-q:hover { color: #ffffff; }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      flex-shrink: 0;
+      stroke: #FF5C3A;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      display: none;
+      color: #a09895;
+      font-size: 14px;
+      padding-bottom: 20px;
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-a {
+      display: block;
+    }
+
+    /* Form */
+    .form-section {
+      margin-bottom: 64px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 520px) {
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    label {
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #6a5e5b;
+    }
+
+    input, select, textarea {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      color: #e5e2e1;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      padding: 14px 16px;
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #4a4240;
+    }
+
+    select option {
+      background: #1a1a1a;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(255, 92, 58, 0.4);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 130px;
+    }
+
+    .submit-btn {
+      margin-top: 8px;
+      background: #FF5C3A;
+      color: #ffffff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      border: none;
+      border-radius: 50px;
+      padding: 16px 40px;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.15s;
+      letter-spacing: -0.01em;
+    }
+    .submit-btn:hover { opacity: 0.9; }
+    .submit-btn:active { transform: scale(0.97); }
+
+    /* Response time note */
+    .response-note {
+      margin-top: 20px;
+      font-size: 13px;
+      color: #4a4240;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #3ae0a0;
+      flex-shrink: 0;
+    }
+
+    /* Footer */
+    .foot {
+      margin-top: 80px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 13px;
+      color: #4a4240;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .foot a { color: #6a5e5b; text-decoration: none; }
+    .foot a:hover { color: #FF5C3A; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <a class="wordmark" href="index.html">
+    <span>KOD</span><span class="accent">A</span>
+  </a>
+
+  <h1>Contact & Support</h1>
+  <p class="meta">We're here to help. Reach us through any of the channels below or send a message directly.</p>
+  <div class="divider"></div>
+
+  <!-- Contact Cards -->
+  <div class="contact-cards">
+
+    <a class="contact-card" href="mailto:support@koda.ai">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+      </div>
+      <div class="card-label">Email</div>
+      <div class="card-title">support@koda.ai</div>
+      <div class="card-sub">General support & billing</div>
+    </a>
+
+    <a class="contact-card" href="mailto:hardware@koda.ai">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="17" r="1" fill="#FF5C3A" stroke="none"/><path d="M9 6h6M9 10h4"/></svg>
+      </div>
+      <div class="card-label">Hardware</div>
+      <div class="card-title">hardware@koda.ai</div>
+      <div class="card-sub">Device issues & warranty</div>
+    </a>
+
+    <a class="contact-card" href="mailto:orders@koda.ai">
+      <div class="card-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </div>
+      <div class="card-label">Orders</div>
+      <div class="card-title">orders@koda.ai</div>
+      <div class="card-sub">Shipping, returns & refunds</div>
+    </a>
+
+  </div>
+
+  <!-- FAQ -->
+  <div class="faq">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        When will my KODA device ship?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">The first production run is scheduled for Winter 2026. All waitlist members will receive an email with tracking details at least one week before dispatch. Estimated dates may shift due to manufacturing timelines.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        How do I set up my KODA device for the first time?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">Place your KODA on any flat surface, press the top button to power on, then download the KODA companion app on iOS or Android. The app will guide you through pairing via Bluetooth in under two minutes. No computer required.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Does KODA require an internet connection to record?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">No. KODA records and stores audio locally on its 32GB flash storage for up to 30 hours of standby. An internet connection is only needed to sync transcripts, summaries, and action items to the app and your integrations.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Is my meeting data private and secure?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">Yes. All data is encrypted in transit with TLS 1.3 and at rest with AES-256. We never sell your recordings or transcripts. You own your data entirely and can delete it at any time from the app.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        Can I get a refund if I change my mind?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">Waitlist reservations can be cancelled any time before your order ships for a full refund. Post-shipment returns are accepted within 30 days for unused, undamaged devices. Contact orders@koda.ai to initiate a return.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        What integrations does KODA support?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">At launch KODA supports Slack, Notion, Jira, and Google Calendar. More integrations including Linear, Asana, Microsoft Teams, and HubSpot are on the roadmap and will be available via the app's integrations settings.</div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggle(this)">
+        What is covered under the hardware warranty?
+        <svg class="faq-icon" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+      </button>
+      <div class="faq-a">KODA hardware is covered against manufacturing defects for 12 months from the date of delivery. This does not cover physical damage, liquid damage, or modifications made outside of our authorised repair process.</div>
+    </div>
+
+  </div>
+
+  <!-- Contact Form -->
+  <div class="form-section">
+    <h2>Send us a message</h2>
+
+    <div class="form-row">
+      <div class="field">
+        <label for="fname">First name</label>
+        <input id="fname" type="text" placeholder="John"/>
+      </div>
+      <div class="field">
+        <label for="lname">Last name</label>
+        <input id="lname" type="text" placeholder="Doe"/>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="email">Email address</label>
+      <input id="email" type="email" placeholder="you@example.com"/>
+    </div>
+
+    <div class="field">
+      <label for="topic">Topic</label>
+      <select id="topic">
+        <option value="" disabled selected>Select a topic</option>
+        <option>Order & Shipping</option>
+        <option>Hardware Issue</option>
+        <option>App & Software</option>
+        <option>Billing & Refunds</option>
+        <option>Privacy & Data</option>
+        <option>Partnership & Press</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="msg">Message</label>
+      <textarea id="msg" placeholder="Describe your issue or question in detail..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="handleSubmit()">Send Message</button>
+
+    <div class="response-note">
+      <div class="dot"></div>
+      We typically respond within 24 hours on business days.
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>© 2026 KODA Industrial Design. All rights reserved.</span>
+    <div style="display:flex; gap: 24px;">
+      <a href="privacy-policy.html">Privacy Policy</a>
+      <a href="terms.html">Terms of Service</a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function toggle(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  function handleSubmit() {
+    const email = document.getElementById('email').value.trim();
+    const msg = document.getElementById('msg').value.trim();
+    if (!email || !msg) {
+      alert('Please fill in your email and message before sending.');
+      return;
+    }
+    const btn = document.querySelector('.submit-btn');
+    btn.textContent = 'Message Sent ✓';
+    btn.style.background = '#3ae0a0';
+    btn.style.color = '#003824';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>
