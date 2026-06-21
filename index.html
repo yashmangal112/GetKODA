@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>KODA | Your meetings, finally useful.</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&amp;family=Space+Grotesk:wght@400;700&amp;display=swap"
@@ -1020,22 +1021,17 @@ void main() {
   });
 
     </script>
-    <script>
+   <script>
     fetch("/api/config")
-      .then(response => response.json())
-      .then(config => {
-        const appStoreLink = document.getElementById("appstore-link");
-        const playStoreLink = document.getElementById("playstore-link");
-
-        if (appStoreLink) {
-          appStoreLink.href = config.apkUrlAppStore;
-        }
-
-        if (playStoreLink) {
-          playStoreLink.href = config.apkUrlPlayStore;
-        }
+      .then(r => r.json())
+      .then(c => {
+        document.getElementById("appstore-link").href = c.apkUrlAppStore ?? "#";
+        document.getElementById("playstore-link").href = c.apkUrlPlayStore ?? "#";
       })
-      .catch(err => console.error("Failed to load config:", err));
+      .catch(() => {
+        document.getElementById("appstore-link").href = "#";
+        document.getElementById("playstore-link").href = "#";
+      });
     </script>
   </body>
 </html>
