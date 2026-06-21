@@ -383,7 +383,7 @@
           </div>
           <div class="hidden md:flex gap-3 items-center">
       <!-- App Store Badge -->
-      <a href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
+      <a id="appstore-link" href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
         <svg viewBox="0 0 24 24" class="w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg">
           <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
         </svg>
@@ -394,7 +394,7 @@
       </a>
 
       <!-- Play Store Badge -->
-      <a href="https://expo.dev/artifacts/eas/oYsURmTmylvuyQ-ToJrrWNZxkzBxcB-o2_AuRXtZfqM.apk" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
+      <a id="playstore-link" href="#" class="flex items-center gap-2 px-4 py-2 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 transition-all duration-300">
 <svg viewBox="0 -2 35 44" class="w-5 h-5" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="21.8" y1="33.29" x2="5.017" y2="16.508" gradientTransform="matrix(1 0 0 -1 0 42)">
@@ -475,7 +475,7 @@
           <img
             alt="KODA Hardware Hero"
             class="relative w-full rounded-2xl shadow-2xl border border-white/5 object-cover"
-            src="koda_main.png"
+            src="assets/koda_main.png"
           />
         </div>
       </div>
@@ -524,7 +524,7 @@
             <img
               alt="KODA Close-up"
               class="w-full h-full object-contain rounded-lg"
-              src="koda_remove.png"
+              src="assets/koda_remove.png"
             />
           </div>
         </div>
@@ -637,7 +637,7 @@
           <img
             alt="KODA App to Hardware Connectivity"
             class="w-full h-full object-contain pointer-events-none fade-up"
-            src="Companion.png"
+            src="assets/Companion.png"
           />
         </div>
       </div>
@@ -1019,6 +1019,23 @@ void main() {
     }, 5000); // exactly matches --total-duration in the animation
   });
 
+    </script>
+    <script>
+    fetch("/api/config")
+      .then(response => response.json())
+      .then(config => {
+        const appStoreLink = document.getElementById("appstore-link");
+        const playStoreLink = document.getElementById("playstore-link");
+
+        if (appStoreLink) {
+          appStoreLink.href = config.apkUrlAppStore;
+        }
+
+        if (playStoreLink) {
+          playStoreLink.href = config.apkUrlPlayStore;
+        }
+      })
+      .catch(err => console.error("Failed to load config:", err));
     </script>
   </body>
 </html>
